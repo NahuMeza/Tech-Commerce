@@ -29,14 +29,14 @@
     background-color: #393E46;
 }
 
-nav a{
+.a-nvlink{
     color: #eee;
     text-decoration: none;
     margin: 10px;
     transition: all 0.2s;
 }
 
-nav a:hover{
+.a-nvlink:hover{
     color:#00ADB5;
     border-bottom:1px solid #00ADB5;
 }
@@ -160,7 +160,7 @@ article img{
 }
 
 @media screen and (max-width: 1080px){
-    .products-bx .id4{
+    .products-bx .id4, .products-bx .id8, .products-bx .id12{
         display: none;
         visibility: hidden;
     }
@@ -171,10 +171,11 @@ article img{
         display: flex;
         visibility: visible;
     }
+    .products-bx{
+        gap: 20px;
+    }
 }
 
-@media screen and (max-width: 480px){
-    .products-bx{
-      gap: 20px;
-    }
+@media screen and (max-width: 480px) {
+    
 }

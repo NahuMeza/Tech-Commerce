@@ -127,7 +127,7 @@ const createCelCarousel = (product = [], box, productName) => {
 }
 
 window.addEventListener("load", () => {
-    if (window.outerWidth < 510) {
+    if (window.outerWidth < 540) {
         createCelCarousel(productos.notebooks, nbBox, "notebooks");
         createCelCarousel(productos.celulares, celBox, "celulares");
         createCelCarousel(productos.monitores, monBox, "monitores");
