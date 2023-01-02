@@ -139,4 +139,17 @@ window.addEventListener("load", () => {
     }
 });
 
+// Style when you click on client attention anchor
 
+const clientAttentionLink = document.getElementById("client-attention-link");
+const clientAttentionBox = document.getElementById("client-attention");
+
+clientAttentionLink.addEventListener("click", () => {
+    setTimeout(() =>{
+        // clientAttentionBox.style.backgroundColor = "#A0A28A"
+        clientAttentionBox.style.backgroundColor = "#05989E"
+    }, 200)
+    setTimeout(() => {
+        clientAttentionBox.style.backgroundColor = "";
+    }, 600)
+});

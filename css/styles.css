@@ -159,6 +159,10 @@ article img{
     background-color: #59616C;
 }
 
+#client-attention{
+    transition: all 0.5s ease-in;
+}
+
 @media screen and (max-width: 1080px){
     .products-bx .id4, .products-bx .id8, .products-bx .id12{
         display: none;
