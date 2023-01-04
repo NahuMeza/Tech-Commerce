@@ -186,7 +186,20 @@ article img{
 }
 
 #cart-products article h3{
-    /* border-left: 1px solid #eee; */
+    background-color: #eee;
+}
+
+#delete-cart-items{
+    color:#59616C;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#delete-cart-items:hover{
+    color:#222831;
+}
+
+.totalPriceSection{
     background-color: #eee;
 }
 

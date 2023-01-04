@@ -137,18 +137,32 @@
               <h1 class="modal-title fs-5" id="carritoLabel">Tu carrito</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body bg-light">
-              <section id="cart-products" class="p-2 gap-2">
+            <div class="modal-body bg-light p-0">
+              <section id="cart-products" class="p-3 gap-2">
 
               </section>
-              <section>
-
+              <section class="totalPriceSection px-3" id="total-cart-section">
+                <p class="m-0 mb-2" id="delete-cart-items">Borrar elementos del carrito</p><div class="d-flex justify-content-between align-items-center"><h3 class="fw-bold">Total:</h3><h2 id="totalPrice"></h2></div>
               </section>
             </div>
             <div class="modal-footer footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="cart-buy-btn"></button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="cart-buy-btn" id="buyToastBtn"></button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buy Toast -->
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto"><i class='bx bx-git-branch g-color'></i> Gracias!</strong>
+            <small> &lt;3 </small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Gracias por tu compra.
           </div>
         </div>
       </div>

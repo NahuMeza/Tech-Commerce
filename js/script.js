@@ -157,17 +157,47 @@ clientAttentionLink.addEventListener("click", () => {
 });
 
 // chart function
-const cartCount = [];
+var cartCount = [];
+var totalAmount = 0;
+var cart = [];
+const totalCartSection = document.getElementById("total-cart-section");
+const deleteCartItems = document.getElementById("delete-cart-items");;
+const totalPrice = document.getElementById("totalPrice");
 const cartProducts = document.getElementById("cart-products");
 const cartBuyBtn = document.querySelector(".cart-buy-btn");
 const htmlCartAmount = document.getElementById("cart-amount");
 htmlCartAmount.innerHTML = cartCount.length;
 cartBuyBtn.innerHTML = `Comprar (${cartCount.length})`;
 
+const createCartArticles = (array, sumPrice) =>{
+    for(let element of array){
+        sumPrice = sumPrice + element[0].price;
+        totalPrice.innerHTML = `$${sumPrice}`
+        cartArticle = document.createElement("article");
+        artContent = cartProducts.appendChild(cartArticle);
+        artContent.classList.add("w-100");
+        artContent.classList.add("row");
+        // artContent.classList.add("p-2");
+        artContent.classList.add("position-relative");
+        artContent.innerHTML = `<div class="col-4 d-flex align-items-center"><img src=${element[0].img} alt="cartProduct" class="w-75 h-75"></div><p class="m-0 col-4 d-flex align-items-center justify-content-center">${element[0].name}</p><h3 class="m-0 col-4 text-end d-flex align-items-center justify-content-end">$${element[0].price}</h3>`
+    }
+}
+
+const blankCart = () => {
+    cartProducts.innerHTML = "";
+    totalAmount = 0;
+    cart = [];
+    cartCount = [];
+    htmlCartAmount.innerHTML= "";
+    htmlCartAmount.innerHTML = cartCount.length;
+    cartBuyBtn.innerHTML = `Comprar (${cartCount.length})`;
+    comprobeCartCount();
+}
+
 window.addEventListener("load", () => {
     const buyButtons = document.querySelectorAll(".buy-btn");
-    for(var i=0;i<buyButtons.length;i++)
-    {
+    comprobeCartCount();
+    for(let i=0;i<buyButtons.length;i++){
         buyButtons[i].addEventListener("click", function()
         {
             const elementId = this.id;
@@ -175,8 +205,9 @@ window.addEventListener("load", () => {
             htmlCartAmount.innerHTML= "";
             htmlCartAmount.innerHTML = cartCount.length;
             cartBuyBtn.innerHTML = `Comprar (${cartCount.length})`;
+            cartBuyBtn.style.border = "0";
 
-            const cart = [];
+            cart = [];
             for (let element of cartCount){
                 const nbProduct = productos.notebooks.filter((obj) => {
                     return obj.id == element;
@@ -194,18 +225,38 @@ window.addEventListener("load", () => {
                 monProduct.length != 0 ? cart.push(monProduct) : null;
             }
             cartProducts.innerHTML = "";
-            for(let element of cart){
-                console.log(element);
-                cartArticle = document.createElement("article");
-                artContent = cartProducts.appendChild(cartArticle);
-                artContent.classList.add("w-100");
-                artContent.classList.add("row");
-                artContent.innerHTML = `<div class="col-4 d-flex align-items-center"><img src=${element[0].img} alt="cartProduct" class="w-75 h-75"></div><p class="m-0 col-4 d-flex align-items-center justify-content-center">${element[0].name}</p><h3 class="m-0 col-4 text-end d-flex align-items-center justify-content-end">$${element[0].price}</h3>`
-            }
+            totalAmount = 0;
+            createCartArticles(cart, totalAmount);
+            comprobeCartCount();
         }); 
     }
+    deleteCartItems.addEventListener("click", () => {
+        blankCart();
+    });
+    cartBuyBtn.addEventListener("click", () => {
+        if(cartCount.length != 0){
+            blankCart();
+        }
+    });
 })
-
-if (cartCount == 0){
-    cartProducts.innerHTML = "<p>No hay productos en tu carrito!</p>"
+const comprobeCartCount = () => {
+    if (cartCount.length == 0){
+        cartProducts.innerHTML = "<p>No hay productos en tu carrito!</p>";
+        totalCartSection.classList.add("d-none");
+    }
+    else if(totalCartSection.classList.contains("d-none")){
+        totalCartSection.classList.remove("d-none");
+    }
 }
+const toastTrigger = document.getElementById('buyToastBtn')
+const toastLiveExample = document.getElementById('liveToast')
+
+toastTrigger.addEventListener('click', () => {
+    if (cartCount.length != 0){
+        const toast = new bootstrap.Toast(toastLiveExample)
+        toast.show()
+    }
+    else{
+        cartBuyBtn.style.border = "1px solid red";
+    }
+})
