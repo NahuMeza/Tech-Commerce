@@ -146,10 +146,47 @@ const clientAttentionBox = document.getElementById("client-attention");
 
 clientAttentionLink.addEventListener("click", () => {
     setTimeout(() =>{
-        // clientAttentionBox.style.backgroundColor = "#A0A28A"
-        clientAttentionBox.style.backgroundColor = "#05989E"
+        clientAttentionBox.style.backgroundColor = "#05989E";
     }, 200)
     setTimeout(() => {
         clientAttentionBox.style.backgroundColor = "";
     }, 600)
 });
+
+// chart function
+const cartCount = [];
+const htmlCartAmount = document.getElementById("cart-amount");
+htmlCartAmount.innerHTML = cartCount.length;
+
+window.addEventListener("load", () => {
+    const buyButtons = document.querySelectorAll(".buy-btn");
+    for(var i=0;i<buyButtons.length;i++)
+    {
+        buyButtons[i].addEventListener("click", function()
+        {
+            const elementId = this.id;
+            cartCount.push(elementId);
+            htmlCartAmount.innerHTML= "";
+            htmlCartAmount.innerHTML = cartCount.length;
+
+            const cart = [];
+            for (let element of cartCount){
+                const nbProduct = productos.notebooks.filter((obj) => {
+                    return obj.id == element;
+                })
+                nbProduct.length != 0 ? cart.push(nbProduct) : null;
+
+                const celProduct = productos.celulares.filter((obj) => {
+                    return obj.id == element;
+                })
+                celProduct.length != 0 ? cart.push(celProduct) : null;
+
+                const monProduct = productos.monitores.filter((obj) => {
+                    return obj.id == element;
+                })
+                monProduct.length != 0 ? cart.push(monProduct) : null;
+            }
+            console.log(cart);
+        }); 
+    }
+})

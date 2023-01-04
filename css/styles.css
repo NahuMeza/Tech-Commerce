@@ -146,6 +146,10 @@ article img{
     border-radius: 5px;
 }
 
+.buy-btn:hover{
+    background-color:#05989E;
+}
+
 .products-bx .prd-carousel{
     width: 400px;
 }
