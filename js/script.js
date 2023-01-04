@@ -77,6 +77,7 @@ const productos= {
 const nbBox = document.getElementById("notebooks");
 const celBox = document.getElementById("cellphones");
 const monBox = document.getElementById("monitors");
+const navUl = document.querySelector(".nav-ul");
 
 const createBox = (product = [], box) => {
     for (let i = 0; i < product.length; i++) {
@@ -131,6 +132,8 @@ window.addEventListener("load", () => {
         createCelCarousel(productos.notebooks, nbBox, "notebooks");
         createCelCarousel(productos.celulares, celBox, "celulares");
         createCelCarousel(productos.monitores, monBox, "monitores");
+
+        navUl.classList.remove("d-flex")
     }
     else {
         createBox(productos.notebooks, nbBox);
@@ -155,8 +158,11 @@ clientAttentionLink.addEventListener("click", () => {
 
 // chart function
 const cartCount = [];
+const cartProducts = document.getElementById("cart-products");
+const cartBuyBtn = document.querySelector(".cart-buy-btn");
 const htmlCartAmount = document.getElementById("cart-amount");
 htmlCartAmount.innerHTML = cartCount.length;
+cartBuyBtn.innerHTML = `Comprar (${cartCount.length})`;
 
 window.addEventListener("load", () => {
     const buyButtons = document.querySelectorAll(".buy-btn");
@@ -168,6 +174,7 @@ window.addEventListener("load", () => {
             cartCount.push(elementId);
             htmlCartAmount.innerHTML= "";
             htmlCartAmount.innerHTML = cartCount.length;
+            cartBuyBtn.innerHTML = `Comprar (${cartCount.length})`;
 
             const cart = [];
             for (let element of cartCount){
@@ -186,7 +193,19 @@ window.addEventListener("load", () => {
                 })
                 monProduct.length != 0 ? cart.push(monProduct) : null;
             }
-            console.log(cart);
+            cartProducts.innerHTML = "";
+            for(let element of cart){
+                console.log(element);
+                cartArticle = document.createElement("article");
+                artContent = cartProducts.appendChild(cartArticle);
+                artContent.classList.add("w-100");
+                artContent.classList.add("row");
+                artContent.innerHTML = `<div class="col-4 d-flex align-items-center"><img src=${element[0].img} alt="cartProduct" class="w-75 h-75"></div><p class="m-0 col-4 d-flex align-items-center justify-content-center">${element[0].name}</p><h3 class="m-0 col-4 text-end d-flex align-items-center justify-content-end">$${element[0].price}</h3>`
+            }
         }); 
     }
 })
+
+if (cartCount == 0){
+    cartProducts.innerHTML = "<p>No hay productos en tu carrito!</p>"
+}
