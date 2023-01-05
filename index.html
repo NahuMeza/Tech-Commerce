@@ -22,11 +22,11 @@
               </span></div>
         </div>
         <nav class="d-flex justify-content-start align-items-center gap-5 px-3 py-2" id="nav-bar">
-            <p class="mb-0 category">Categorías</p>
+            <p class="mb-0 category" id="category-nav">Categorías</p>
             <ul class="list-unstyled d-flex justify-content-around align-items-center m-0 nav-ul">
-                <li><a href="" class="a-nvlink">Notebooks</a></li>
-                <li class="mx-5"><a href="" class="a-nvlink">Celulares</a></li>
-                <li><a href="" class="a-nvlink">Monitores</a></li>
+                <li><a href="#nbSection" class="a-nvlink">Notebooks</a></li>
+                <li class="mx-5"><a href="#celSection" class="a-nvlink">Celulares</a></li>
+                <li><a href="#monSection" class="a-nvlink">Monitores</a></li>
             </ul>
         </nav>
     </header>
@@ -54,8 +54,8 @@
             </button>
         </div>
     </section>
-    <main>
-        <section class="my-3">
+    <main class="position-relative">
+        <section class="my-3" id="nbSection">
             <h3 class="ms-2">
                 Elegí tu notebook ideal
             </h3>
@@ -63,7 +63,7 @@
 
             </div>
         </section>
-        <section class="my-3">
+        <section class="my-3" id="celSection">
             <h3 class="ms-2">
                 Comunicate con lo mejor de la actualidad
             </h3>
@@ -71,7 +71,7 @@
                 
             </div>
         </section>
-        <section class="my-3">
+        <section class="my-3" id="monSection">
             <h3 class="ms-2">
                 Trabaja y jugá con la mejor calidad
             </h3>
@@ -105,6 +105,16 @@
                 </div>
             </div>
         </section>
+
+        <!-- cel nav -->
+      <nav class="position-absolute top-0 start-0 cel-nav ms-1 d-none" id="cel-nav">
+        <ul class="list-unstyled d-flex flex-column justify-content-around align-items-center m-0 cel-nav-ul">
+            <li class="w-100 p-2"><a href="#nbSection" class="cel-nvlink">Notebooks</a></li>
+            <li class="w-100 p-2"><a href="#celSection" class="cel-nvlink">Celulares</a></li>
+            <li class="w-100 p-2"><a href="#monSection" class="cel-nvlink">Monitores</a></li>
+        </ul>
+      </nav>
+
     </main>
     <footer class="footer row w-100 m-0">
         <section class="col-lg-6 col-sm-12">
@@ -123,7 +133,7 @@
                 <h6 class="g-color">Enterate al momento</h6>
                 <p>Suscribite para recibir mails con todas las noticias</p>
                 <form class="d-flex align-items-center" action="">
-                    <input type="email" name="email" id="email" placeholder="Ingresa tu email..."><button type="submit"><i class='bx bx-chevrons-right'></i></button>
+                    <input type="email" name="email" id="email" placeholder="Ingresa tu email..." required><button type="submit" id="submit-button"><i class='bx bx-chevrons-right'></i></button>
                 </form>
             </div>
         </section>

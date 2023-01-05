@@ -1,5 +1,7 @@
 *{padding:0;margin:0;}
-
+/* * {
+    outline: 1px solid red;
+  } */
 .header, .footer, .modal-footer.footer{
     background-color: #222831;
     color: aliceblue;
@@ -29,14 +31,14 @@
     background-color: #393E46;
 }
 
-.a-nvlink{
+.a-nvlink, .cel-nvlink{
     color: #eee;
     text-decoration: none;
     margin: 10px;
     transition: all 0.2s;
 }
 
-.a-nvlink:hover{
+.a-nvlink:hover, .cel-nvlink:hover{
     color:#00ADB5;
     border-bottom:1px solid #00ADB5;
 }
@@ -203,6 +205,16 @@ article img{
     background-color: #eee;
 }
 
+.cel-nav-ul{
+    background-color:#393E46;
+}
+.cel-nav-ul li{
+    border:1px solid #eee;
+}
+.cel-nav{
+    z-index: 1;
+}
+
 @media screen and (max-width: 1080px){
     .products-bx .id4, .products-bx .id8, .products-bx .id12{
         display: none;
@@ -228,5 +240,10 @@ article img{
     .nav-carousel{
         display: none;
         visibility: hidden;
+    }
+    .category::after{
+        content:" v";
+        font-size: 1.2em;
+        color: #00ADB5;
     }
 }

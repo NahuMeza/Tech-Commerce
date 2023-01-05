@@ -134,6 +134,26 @@ window.addEventListener("load", () => {
         createCelCarousel(productos.monitores, monBox, "monitores");
 
         navUl.classList.remove("d-flex")
+
+        // Nav cellphones functioning
+        const categoryNav = document.getElementById("category-nav");
+        const celNav = document.getElementById("cel-nav");
+        categoryNav.addEventListener("click", () => {
+            if(!celNav.classList.contains("d-none")){
+                celNav.classList.add("d-none");
+            }   
+            else{
+                celNav.classList.remove("d-none");
+            }
+        });
+        celNav.addEventListener("click", () => {
+            if(!celNav.classList.contains("d-none")){
+                celNav.classList.add("d-none");
+            }   
+            else{
+                celNav.classList.remove("d-none");
+            }
+        });
     }
     else {
         createBox(productos.notebooks, nbBox);
@@ -260,3 +280,14 @@ toastTrigger.addEventListener('click', () => {
         cartBuyBtn.style.border = "1px solid red";
     }
 })
+
+// Fake form
+
+const submitButton = document.getElementById("submit-button");
+const emailValue = document.getElementById("email");
+
+submitButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    emailValue.value = ""
+});
+
